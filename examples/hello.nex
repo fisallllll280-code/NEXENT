@@ -1,0 +1,2 @@
+# NEXENT DSL
+INTENT hello BY USER USING echo WITH message=hello
