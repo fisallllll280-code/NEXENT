@@ -1,4 +1,750 @@
- فهرس.
+نعم. الآن فهمت المقصود بدقة: أنت لا تريد رسمًا يخلط NEXENT مع VAIXLNS، ولا تريد قائمة أسماء مدمجة. تريد تجميع NEXENT نفسه ككيان هندسي مستقل، ثم وضع الابتكارات والصياغات والهندسة داخله في مواضعها الصحيحة.
+
+والأرشيف يدعم هذا الفصل: توجد فيه صراحةً NEXENT Research Loop، Architecture Search، Candidate VAIXLNS، Evolution OS، System Forge، Genome، VAMM/VAIXLNS-IR وغيرها، لكن بعضها تاريخي وبعضها مقترح؛ لذلك لن أخلط بينهما.
+
+NEXENT — التجميع الشامل المنضبط
+
+0. قاعدة الفصل
+
+VAIXLNS
+= المنظومة/الكون التشغيلي الذي نريد بناءه
+NEXENT
+= المحرك الذي يبحث في فضاء الأنظمة
+  ويكتشف النقص
+  ويصمم المرشحين
+  ويعيد تركيبهم
+  ويختبرهم
+  ويثبتهم
+  ثم يقترح إدخالهم إلى VAIXLNS
+
+أي:
+
+                    NEXENT
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+     DISCOVER       DESIGN       EVOLVE
+          │            │            │
+          └────────────┼────────────┘
+                       ▼
+                 CANDIDATE
+                       │
+                  SIMULATION
+                       │
+                  VERIFICATION
+                       │
+                     PROOF
+                       │
+                  GOVERNANCE
+                       │
+                       ▼
+                VAIXLNS ADOPTION
+
+NEXENT لا يصبح VAIXLNS.
+وVAIXLNS لا يصبح مختبرًا تجريبيًا بلا حدود.
+
+⸻
+
+1. NEXENT META-LAYER
+
+وظيفته ليست التنفيذ.
+
+بل تعريف فضاء البحث المعماري.
+
+NEXENT META
+│
+├── Architecture Ontology
+├── System Ontology
+├── Capability Ontology
+├── Mind Ontology
+├── Constraint Ontology
+├── Evidence Ontology
+├── Proof Ontology
+├── Evolution Ontology
+└── Search Ontology
+
+السؤال المركزي:
+
+ما الذي يمكن أن يكون نظامًا أصلًا؟
+
+⸻
+
+2. NEXENT ARCHITECTURE MEMORY
+
+هنا تحفظ جميع الأجيال، دون سحق التاريخ.
+
+LEGACY
+  │
+  ├── Original Architecture
+  ├── Variant
+  ├── Fork
+  ├── Transformation
+  └── Historical Proposal
+             │
+             ▼
+       ARCHITECTURE LINEAGE
+             │
+       A → B → C → D
+
+والسجل لا يحذف الأصل عند ظهور نسخة Canonical؛ بل يحتفظ بـLegacy ID وCanonical ID والعلاقات والـLifecycle والـProof Status. تنظيم VAIXLNS.txt
+
+⸻
+
+3. ARCHITECTURE ATOMIZER
+
+هذه أول آلة حقيقية في NEXENT.
+
+بدل أن يرى:
+
+"Architecture X"
+
+يفككها إلى:
+
+Architecture
+├── Components
+├── Interfaces
+├── Contracts
+├── States
+├── Events
+├── Dependencies
+├── Policies
+├── Authority
+├── Capabilities
+├── Failure Modes
+├── Recovery
+├── Evidence
+├── Proof Obligations
+└── Evolution Rules
+
+ثم يحولها إلى Architecture Genome.
+
+⸻
+
+4. ARCHITECTURE GENOME
+
+كل بنية تصبح قابلة للمقارنة وإعادة التركيب:
+
+GENOME
+│
+├── Purpose
+├── Capabilities
+├── Components
+├── Topology
+├── Contracts
+├── State Model
+├── Event Model
+├── Authority Model
+├── Resource Model
+├── Failure Model
+├── Recovery Model
+├── Security Model
+├── Proof Model
+├── Observability
+└── Evolution Rules
+
+وهذا يتسق مع المواد التي تجعل Capability Genome وArchitecture Genome أساسًا للتركيب والتطور. تنظيم VAIXLNS.txt
+
+⸻
+
+5. CAPABILITY DISCOVERY ENGINE
+
+هنا تبدأ الفكرة التي طلبتها سابقًا:
+
+النظام يكتشف ماذا ينقصه.
+
+ليس:
+
+User asks → Build feature
+
+بل:
+
+REALITY
+ ↓
+OBSERVATION
+ ↓
+CURRENT CAPABILITY MAP
+ ↓
+REQUIRED CAPABILITY MAP
+ ↓
+DELTA
+ ↓
+CAPABILITY GAP
+
+والـGap يمكن أن يكون:
+
+Knowledge Gap
+Capability Gap
+Architecture Gap
+Execution Gap
+Verification Gap
+Ontology Gap
+Mind Gap
+
+⸻
+
+6. ARCHITECTURE SEARCH ENGINE
+
+عند اكتشاف الفجوة لا يختار NEXENT حلًا واحدًا مباشرة.
+
+بل:
+
+CAPABILITY GAP
+       ↓
+SEARCH SPACE
+       ↓
+Architecture A
+Architecture B
+Architecture C
+Architecture D
+...
+Architecture N
+
+ثم يقارنها حسب:
+
+Correctness
+Capability
+Cost
+Complexity
+Risk
+Reliability
+Proofability
+Recoverability
+Security
+Observability
+Evolution Potential
+
+هذه ليست Ranking للنماذج فقط؛ إنها Architecture Search.
+
+⸻
+
+7. MULTI-MIND ARCHITECTURE SYNTHESIS
+
+وهنا ندخل الابتكار الذي طلبته أنت تحديدًا.
+
+NEXENT لا يستخدم عقلًا واحدًا للحكم على التصميم.
+
+بل يولّد مجموعة أدوار استدلالية مستقلة:
+
+                    PROBLEM
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+       CAUSAL        SYSTEM       RISK
+        MIND          MIND         MIND
+          │            │            │
+          ├────────────┼────────────┤
+          ▼            ▼            ▼
+     SECURITY       ECONOMIC      DOMAIN
+       MIND           MIND         MIND
+          │            │            │
+          └────────────┼────────────┘
+                       ▼
+                ADVERSARIAL MIND
+                       │
+                       ▼
+               VERIFICATION MIND
+                       │
+                       ▼
+                SYNTHESIS MIND
+
+الهدف ليس “زيادة عدد الوكلاء”.
+
+الهدف:
+
+إجبار التصميم على المرور عبر نماذج تفكير متعارضة قبل اعتماده.
+
+⸻
+
+8. ARCHITECTURE RECOMBINATION ENGINE
+
+هنا تدخل DNA Recombinant.
+
+Genome A
+   +
+Genome B
+   +
+Genome C
+   ↓
+RECOMBINATION
+   ↓
+Candidate Genome
+   ↓
+Candidate Architecture
+
+والعمليات الأساسية:
+
+COMPOSE
+MERGE
+SPLIT
+REMOVE
+REPLACE
+ISOLATE
+SPECIALIZE
+GENERALIZE
+DELEGATE
+REPLICATE
+
+لكن الناتج Candidate فقط.
+
+لا يملك سلطة الدخول إلى النظام الحقيقي.
+
+⸻
+
+9. COUNTERFACTUAL ARCHITECTURE LAB
+
+هذه من أهم طبقات NEXENT.
+
+بدل:
+
+“هل التصميم الجديد جيد؟”
+
+نسأل:
+
+What if Architecture A?
+What if Architecture B?
+What if component X disappears?
+What if load doubles?
+What if dependency fails?
+What if policy changes?
+What if state diverges?
+What if recovery starts mid-operation?
+
+ثم:
+
+ARCHITECTURE
+ ↓
+DIGITAL TWIN
+ ↓
+COUNTERFACTUALS
+ ↓
+SIMULATION
+ ↓
+CAUSAL ANALYSIS
+ ↓
+BLAST RADIUS
+
+والأرشيف يضع صراحةً Counterfactual → Causal/Blast → Verification → Proof → Governance قبل Canonicalization. قسم · تثبيت المعمارية الكانونية.txt
+
+⸻
+
+10. ARCHITECTURE ATTACK ENGINE
+
+لا يبحث فقط عن نجاح المرشح.
+
+يبحث عن سبب سقوطه.
+
+CANDIDATE
+ ↓
+RED TEAM
+ ↓
+FAULT INJECTION
+ ↓
+ADVERSARIAL CONDITIONS
+ ↓
+CONTRADICTION
+ ↓
+FAILURE ANALYSIS
+
+ثم:
+
+Failure
+ ↓
+Causal Diagnosis
+ ↓
+Architecture Weakness
+ ↓
+Mutation Candidate
+
+وهذه بالضبط الصياغة الموجودة في تحليل Ignite: إصلاح السبب المعماري لا العرض فقط. تحليل أرشيف Ignite.txt
+
+⸻
+
+11. PROOF-CARRYING ARCHITECTURE
+
+كل مرشح لا يخرج كنص.
+
+يخرج معه:
+
+ARCHITECTURE CANDIDATE
+│
+├── Contracts
+├── Invariants
+├── Assumptions
+├── Proof Obligations
+├── Simulation Evidence
+├── Attack Results
+├── Causal Evidence
+├── Failure Analysis
+└── Verification Status
+
+وبالتالي:
+
+Architecture
++
+Evidence
++
+Proof
+=
+Proof-Carrying Architecture
+
+⸻
+
+12. GOVERNED EVOLUTION
+
+هنا الحد الفاصل.
+
+NEXENT
+ ↓
+Candidate
+ ↓
+Simulation
+ ↓
+Attack
+ ↓
+Verification
+ ↓
+Proof
+ ↓
+Governance
+ ↓
+ADOPTION REQUEST
+
+ثم فقط:
+
+VAIXLNS
+ ↓
+Controlled Adoption
+
+ولا يوجد:
+
+NEXENT → overwrite VAIXLNS
+
+الأرشيف صريح في أن التطور يجب أن يحافظ على:
+
+VAIXLNS₀
+ ↓
+VAIXLNS₁
+ ↓
+VAIXLNS₂
+
+مع Twin وProof وGovernance بين الأجيال. اختبار التحكم الماورائي.txt
+
+⸻
+
+13. NEXENT RESEARCH LOOP
+
+هذه هي الحلقة الرئيسية:
+
+┌───────────────────────────────────────────┐
+│                                           │
+│                 OBSERVE                   │
+│                    ↓                      │
+│                 FRONTIER                  │
+│                    ↓                      │
+│                HYPOTHESIS                 │
+│                    ↓                      │
+│                 CANDIDATE                 │
+│                    ↓                      │
+│                  TWIN                     │
+│                    ↓                      │
+│               SIMULATION                  │
+│                    ↓                      │
+│                 ATTACK                    │
+│                    ↓                      │
+│                  PROOF                    │
+│                    ↓                      │
+│                GOVERNANCE                 │
+│                    ↓                      │
+│                 ADOPTION                  │
+│                    ↓                      │
+│                 OBSERVE                   │
+│                    ↑                      │
+└────────────────────┴──────────────────────┘
+
+وهذه الحلقة موثقة في الأرشيف باسم NEXENT Research Loop. قسم · قسم · بحث شامل للمنظومة.txt
+
+⸻
+
+14. SYSTEM FORGE
+
+بعد اعتماد المعمارية، يأتي التصنيع.
+
+SPECIFICATION
+      ↓
+ARCHITECTURE
+      ↓
+CONTRACT
+      ↓
+GENOME
+      ↓
+ARTIFACT
+      ↓
+TEST
+      ↓
+VALIDATION
+      ↓
+DEPLOYMENT
+      ↓
+RUNTIME
+
+هذه ليست وظيفة NEXENT البحثية وحدها؛ هي Generation/Forge interface التي تربط البحث بالتصنيع.
+
+⸻
+
+15. VAMM / VAIXLNS-IR
+
+هذه طبقة الترجمة.
+
+بدل أن تكون المعمارية مجرد كلام:
+
+Natural Language
+       ↓
+VAMM
+       ↓
+VAIXLNS-IR
+       ↓
+Semantic IR
+       ↓
+Architecture IR
+       ↓
+State IR
+       ↓
+Event IR
+       ↓
+Proof IR
+       ↓
+Governance IR
+       ↓
+Execution IR
+
+والأرشيف يطرح تحديدًا سؤالًا أعمق: هل يستطيع VAIXLNS وصف نفسه باللغة الوسيطة نفسها التي يستخدمها لبناء الأنظمة؟ اختبار التحكم الماورائي.txt
+
+⸻
+
+16. SELF-DESCRIPTION ENGINE
+
+هنا يبدأ NEXENT بالنظر إلى نفسه كموضوع هندسي:
+
+NEXENT
+ ↓
+NEXENT-IR
+ ↓
+NEXENT Genome
+ ↓
+NEXENT Architecture
+ ↓
+NEXENT Twin
+ ↓
+NEXENT Proof
+
+ثم:
+
+Current NEXENT
+       ↓
+Architecture Gap
+       ↓
+Candidate NEXENT
+
+وهذه ليست “NEXENT يغير نفسه”.
+
+بل:
+
+NEXENT يصمم نسخة مرشحة من NEXENT.
+
+ثم تخضع النسخة للدورة نفسها.
+
+⸻
+
+17. META-ARCHITECTURE
+
+بعد ذلك يصبح لدينا:
+
+Architecture
+      ↓
+Architecture-of-Architectures
+      ↓
+Meta-Architecture
+
+وظيفتها اكتشاف:
+
+هل طريقة NEXENT نفسها في البحث عن المعماريات أصبحت قيدًا؟
+
+فتصبح لدينا:
+
+SYSTEM GAP
+ARCHITECTURE GAP
+ARCHITECTURE-SEARCH GAP
+MIND GAP
+META-METHOD GAP
+
+وهذا هو المستوى الذي يقترب من مفهوم Architecture that can critique its own architecture الموجود في الأرشيف. تحليل أرشيف Ignite.txt
+
+⸻
+
+18. NEXENT لا يملك السلطة
+
+وهذه نقطة هندسية مهمة جدًا:
+
+NEXENT
+= Discovery + Design + Search + Simulation + Proof Candidate
+
+وليس:
+
+NEXENT = Sovereignty
+
+الحدود:
+
+NEXENT
+   │
+   ├── CAN discover
+   ├── CAN propose
+   ├── CAN generate
+   ├── CAN simulate
+   ├── CAN attack
+   └── CAN prove
+          │
+          ▼
+     GOVERNANCE
+          │
+          ▼
+     VAIXLNS AUTHORITY
+
+لذلك يبقى:
+
+Capability ≠ Authority
+
+وIntelligence ≠ Authority. تنظيم VAIXLNS.txt
+
+⸻
+
+19. أين تذهب الابتكارات؟
+
+حتى لا نخلطها:
+
+المجال	المكوّن
+اكتشاف النقص	Capability Discovery
+البحث	Architecture Search
+تفكيك الأنظمة	Architecture Atomizer
+تمثيل البنية	Architecture Genome
+إعادة التركيب	DNA Recombinant
+تعدد الاستدلال	Multi-Mind
+التجربة	Architecture Laboratory
+البدائل	Counterfactual Architecture
+الهجوم	Red-Team / Adversarial
+السبب	Causal Architecture Analysis
+الإثبات	Proof-Carrying Architecture
+التصنيع	System Forge / ASGF
+التمثيل	VAMM / VAIXLNS-IR
+التطور	Evolution Engine
+الذاكرة	Architecture Lineage
+التخلص من التعقيد	Architectural Entropy GC
+الإصلاح	Architecture-Level Self-Healing
+اختبار NEXENT نفسه	Meta-Architecture
+اعتماد التغيير	Governed Evolution
+
+هذه هي الهندسة.
+أما أسماء الأنظمة التاريخية فتبقى في Archive/Lineage ولا تُرمى داخل هذه الطبقات.
+
+⸻
+
+20. الرسم النهائي لـ NEXENT
+
+                         ┌──────────────────────┐
+                         │       NEXENT         │
+                         │ ARCHITECTURE SEARCH  │
+                         │     & EVOLUTION      │
+                         └──────────┬───────────┘
+                                    │
+             ┌──────────────────────┼──────────────────────┐
+             ▼                      ▼                      ▼
+      ARCHITECTURE             CAPABILITY              MIND
+        UNIVERSE                  SPACE                 SPACE
+             │                      │                      │
+             └──────────────────────┼──────────────────────┘
+                                    ▼
+                          GAP DISCOVERY ENGINE
+                                    │
+                  ┌─────────────────┼─────────────────┐
+                  ▼                 ▼                 ▼
+             KNOWLEDGE          CAPABILITY        ARCHITECTURE
+                GAP                GAP                GAP
+                  └─────────────────┼─────────────────┘
+                                    ▼
+                         MULTI-MIND SYNTHESIS
+                                    │
+                                    ▼
+                         ARCHITECTURE SEARCH
+                                    │
+                                    ▼
+                       GENOME RECOMBINATION
+                                    │
+                                    ▼
+                       CANDIDATE GENERATION
+                                    │
+                                    ▼
+                    ┌─────────────────────────┐
+                    │ ARCHITECTURE LABORATORY │
+                    └────────────┬────────────┘
+                                 ▼
+                         DIGITAL TWIN
+                                 ▼
+                         COUNTERFACTUAL
+                                 ▼
+                       CAUSAL / BLAST ANALYSIS
+                                 ▼
+                           ADVERSARIAL TEST
+                                 ▼
+                           VERIFICATION
+                                 ▼
+                              PROOF
+                                 ▼
+                           GOVERNANCE
+                                 ▼
+                       CONTROLLED ADOPTION
+                                 │
+                                 ▼
+                              VAIXLNS
+                                 │
+                                 ▼
+                              REALITY
+                                 │
+                                 ▼
+                            OBSERVATION
+                                 │
+                                 └───────────────► NEXENT
+
+والحد الفاصل بينهما:
+
+                 NEXENT
+                   │
+          "ماذا يجب أن يكون؟"
+                   │
+          "ماذا ينقص؟"
+                   │
+          "ما المعمارية الأفضل تمثيلاً؟"
+                   │
+          "كيف نثبتها؟"
+                   ▼
+              GOVERNANCE
+                   │
+                   ▼
+                VAIXLNS
+                   │
+          "كيف نعيش بها؟"
+                   │
+          "كيف ننفذها؟"
+                   │
+          "كيف نراقبها؟"
+                   │
+          "كيف نسجل الحقيقة؟"
+                   │
+          "كيف نعمل بها؟"
+                   ▼
+                REALITY
+                   │
+                   └──────────► NEXENT
+
+هذه هي الصياغة التي أراها صحيحة للأرشيف: NEXENT ليس صندوقًا إضافيًا داخل VAIXLNS؛ بل طبقة هندسة/بحث معماري مستقلة ذات واجهة اعتماد إلى VAIXLNS. والأفكار المقترحة تبقى موسومة كـPROPOSED، والتاريخية كـLEGACY/HISTORICAL، والكانونية كـCANONICAL بدل خلطها. هذا الفصل تحديدًا هو ما كان ناقصًا في الرسومات السابقة.فهرس.
 نعم. الآن الدمج يستحق أن يتم — لكن ليس بعملية لصق V4/V5 فوق VAIXLNS.
 راجعت طبقات الأرشيف التي ظهرت في ملفات Architecture Overview، التفكيك الهرمي، تثبيت المعمارية الكانونية، OIF، تحليل Ignite، التنظيم، واختبار التحكم الماورائي، والنتيجة أن لدينا بالفعل عدة معماريات متداخلة، وبعضها يصف نفس الوظيفة بأسماء مختلفة. 
 
