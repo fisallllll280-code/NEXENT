@@ -35,6 +35,10 @@ class NexentKernel:
         execution_id="EX-"+uuid.uuid4().hex[:20]
         trace=[]
         self.ledger.append("INTENT_ACCEPTED",intent.actor,intent.id,{"objective":intent.objective,"capability":intent.capability})
+        graph_errors=self.graph.validate()
+        if graph_errors:
+            self.ledger.append("EXECUTION_REJECTED","SYSTEM",execution_id,{"reason":"INVALID_GRAPH","errors":graph_errors})
+            return ExecutionResult(execution_id,"REJECTED",reason="INVALID_GRAPH")
         cap=self.capabilities.get(intent.capability)
         if not cap:
             self.ledger.append("EXECUTION_REJECTED","SYSTEM",execution_id,{"reason":"UNKNOWN_CAPABILITY"})
