@@ -26,3 +26,20 @@ def test_graph_validation():
     k=kernel()
     k.register_entity(EntitySpec("broken","component","x",(),("missing",)))
     assert k.validate()
+
+def test_invalid_graph_blocks_execution():
+    k=kernel()
+    k.register_entity(EntitySpec("broken","component","x",(),("missing",)))
+    r=k.execute(Intent("i3","user","sum","sum",{"a":"2","b":"3"}))
+    assert r.status=="REJECTED"
+    assert r.reason=="INVALID_GRAPH"
+    assert not any(e.type=="EXECUTION_STARTED" for e in k.ledger.events)
+
+
+def test_denied_capability_does_not_execute():
+    k=kernel()
+    k.constitution.deny("sum")
+    r=k.execute(Intent("i4","user","sum","sum",{"a":"2","b":"3"}))
+    assert r.status=="REJECTED"
+    assert r.reason=="sum"
+    assert not any(e.type=="EXECUTION_COMPLETED" for e in k.ledger.events)
