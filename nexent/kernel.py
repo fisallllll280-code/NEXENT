@@ -8,9 +8,9 @@ from .proof import ProofEngine, Evidence
 from .evolution import EvolutionEngine
 
 class NexentKernel:
-    def __init__(self) -> None:
+    def __init__(self, ledger_path: str | None = None) -> None:
         self.graph=SystemGraph()
-        self.ledger=EventLedger()
+        self.ledger=EventLedger(ledger_path)
         self.constitution=Constitution()
         self.proof=ProofEngine()
         self.evolution=EvolutionEngine()
