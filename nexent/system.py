@@ -27,7 +27,7 @@ class NEXENTSystem:
         self.coordinator = MultiMindCoordinator(self.agents)
         self.neo = NEXENTEngineeringOntology()
         self.contradictions = ContradictionEngine()
-        self.engineering = EngineeringRuntime(self.kernel.ledger)
+        self.engineering = EngineeringRuntime(ledger=self.kernel.ledger)
         self.physics = PhysicsEngine()
         self.portfolios: dict[str, Portfolio] = {}
         self.visuals: dict[str, VANDesign] = {}
