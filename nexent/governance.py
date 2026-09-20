@@ -22,7 +22,8 @@ class Constitution:
     def evaluate(self, intent: Intent, capability: Capability) -> Decision:
         if capability.id in self.denied_capabilities:
             return Decision(False, "CAPABILITY_DENIED", capability.id)
-        missing = sorted(self.required_fields.get(capability.id, set()) - set(intent.payload))
+        required = sorted(self.required_fields.get(capability.id, set()))
+        missing = [field for field in required if field not in intent.payload]
         if missing:
-            return Decision(False, "MISSING_INPUT", ",".join(missing))
+            return Decision(False, "MISSING_INPUT", ",".join(required))
         return Decision(True, "ALLOW", "constitutional checks passed")
