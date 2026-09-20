@@ -428,3 +428,144 @@ This document is a design/knowledge artifact, not a runtime module.
 Its defining unit is therefore not the server and not the individual application.
 
 Its defining unit is the **relationship between independently identifiable systems across their operating and development lifecycle**.
+
+
+---
+
+## 17. Environment-Carried VLNS Kernel
+
+VLNS shall support an **Environment-Carried Kernel** model: every execution environment can carry a minimal VLNS kernel instance that preserves canonical VLNS semantics while adapting only substrate-specific mechanisms.
+
+```text
+VLNS KERNEL
+├── Canonical Core
+│   ├── Identity
+│   ├── Contracts
+│   ├── Governance semantics
+│   ├── Lifecycle semantics
+│   ├── Evidence semantics
+│   ├── Coordination semantics
+│   └── Development lineage
+└── Environment Binding
+    ├── Local
+    ├── Container
+    ├── VM
+    ├── Remote Node
+    ├── Cluster
+    ├── Cloud
+    ├── Edge
+    └── Hybrid
+```
+
+The environment does not redefine VLNS; it supplies the substrate through which the canonical kernel operates.
+
+### 17.1 Kernel Portability Invariant
+
+For environment Eᵢ:
+
+```text
+K_VLNS(Eᵢ) = K_CANONICAL + B(Eᵢ)
+```
+
+where `K_CANONICAL` is environment-independent VLNS semantics and `B(Eᵢ)` is a verified environment binding/adapter.
+
+The target property is semantic equivalence across supported environments while allowing substrate operations to differ.
+
+### 17.2 Environment Contribution
+
+Each environment contributes a machine-readable Environment Profile containing `environment_id`, `environment_type`, `runtime`, `available_resources`, `network_model`, `storage_model`, `security_boundary`, `process_model`, `communication_mechanisms`, `supported_capabilities`, `constraints`, `health_signals`, `deployment_methods`, `adapter_version`, `verification_status`, and `provenance`.
+
+VLNS performs:
+
+```text
+DISCOVER ENVIRONMENT → PROFILE ENVIRONMENT → LOAD / BIND KERNEL → VERIFY BINDING → OPERATE → OBSERVE → DEVELOP → RE-VERIFY
+```
+
+### 17.3 Kernel Mobility
+
+A VLNS kernel may move its canonical identity, contracts, required continuity state, and evidence lineage between compatible environments. Migration is not unrestricted copying. Before activation:
+
+```text
+SOURCE STATE → COMPATIBILITY CHECK → DEPENDENCY CHECK → SECURITY/GOVERNANCE CHECK → STATE/EVIDENCE CHECK → TARGET BINDING → VERIFICATION → ACTIVATE
+```
+
+If compatibility or verification fails, the target kernel remains inactive.
+
+### 17.4 Kernel Federation
+
+Multiple environment-carried kernels may federate without requiring one permanent central server:
+
+```text
+                 VLNS FEDERATION
+                       │
+          ┌────────────┼────────────┐
+          ↓            ↓            ↓
+      KERNEL-A     KERNEL-B     KERNEL-C
+       Local          VM         Cloud
+          │            │            │
+       Systems      Systems      Systems
+```
+
+### 17.5 Kernel Continuity
+
+A kernel instance preserves a continuity chain:
+
+```text
+KERNEL@E1 → migration / replication → KERNEL@E2 → verification → KERNEL@E2-ACTIVE
+```
+
+The continuity record identifies source environment, target environment, kernel identity/version, state checkpoint, evidence checkpoint, contract set, compatibility result, verification result, activation decision, and provenance.
+
+### 17.6 Non-Negotiable Separation
+
+```text
+ENVIRONMENT ≠ VLNS
+ENVIRONMENT ADAPTER ≠ VLNS KERNEL
+KERNEL INSTANCE ≠ ENTIRE ENVIRONMENT
+MIGRATION ≠ VERIFIED ACTIVATION
+```
+
+This makes VLNS portable without making its semantics dependent on a particular operating system, server, cloud provider, container runtime, or hardware platform.
+
+---
+
+## 18. Canonical Architecture: Kernel Everywhere, Semantics One
+
+```text
+                         VLNS
+                 CANONICAL SEMANTICS
+                          │
+          ┌───────────────┼───────────────┐
+          ↓               ↓               ↓
+      VLNS-KERNEL      VLNS-KERNEL      VLNS-KERNEL
+       + LOCAL          + CLUSTER         + CLOUD
+       BINDING          BINDING           BINDING
+          │               │               │
+       Systems          Systems          Systems
+          └───────────────┼───────────────┘
+                          │
+                     FEDERATED VLNS
+```
+
+> **Every environment may carry a VLNS kernel; no environment owns the definition of VLNS.**
+
+This makes VLNS a portable operating-and-development fabric whose kernel can inhabit heterogeneous environments while preserving one canonical semantic contract.
+
+### Implementation boundary
+
+```text
+VLNS SPEC
+→ KERNEL CORE CONTRACT
+→ ENVIRONMENT PROFILE SCHEMA
+→ ENVIRONMENT ADAPTER CONTRACT
+→ KERNEL BOOTSTRAP
+→ REGISTRY
+→ FEDERATION
+→ ORCHESTRATION
+→ OBSERVABILITY
+→ DEVELOPMENT PIPELINE
+→ MIGRATION / CONTINUITY
+→ VERIFICATION
+```
+
+Execution status for this section: **DESIGN / TARGET**, not implemented.
