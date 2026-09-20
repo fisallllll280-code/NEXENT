@@ -26,8 +26,9 @@ class Scenario:
 
 def simulate(scenario: Scenario) -> dict[str, Decimal | str]:
     gross = scenario.starting_balance + scenario.expected_revenue
-    reserve = gross * scenario.reserve_ratio
-    ending = gross - scenario.expected_cost - reserve
+    net_before_reserve = gross - scenario.expected_cost
+    reserve = net_before_reserve * scenario.reserve_ratio
+    ending = net_before_reserve - reserve
     return {
         "scenario": scenario.name,
         "gross_resources": gross,
