@@ -7,6 +7,9 @@ from .agents.registry import AgentRegistry
 from .portfolio import Portfolio
 from .physics import PhysicsEngine
 from .van import VANDesign
+from .canonical import Nexus, SystemGenome, NEXENTUIR, InnovationRecord
+from .languages import NativeLanguageRegistry, proposed_nxl_registry
+from .archive import ArchiveReconstructor
 
 @dataclass(frozen=True)
 class SystemSnapshot:
@@ -18,8 +21,8 @@ class SystemSnapshot:
 
 class NEXENTSystem:
     """Integrated composition root for NEXENT subsystems."""
-    def __init__(self) -> None:
-        self.kernel = NexentKernel()
+    def __init__(self, ledger_path: str | None = None) -> None:
+        self.kernel = NexentKernel(ledger_path)
         self.agents = AgentRegistry()
         self.coordinator = MultiMindCoordinator(self.agents)
         self.neo = NEXENTEngineeringOntology()
@@ -28,6 +31,10 @@ class NEXENTSystem:
         self.physics = PhysicsEngine()
         self.portfolios: dict[str, Portfolio] = {}
         self.visuals: dict[str, VANDesign] = {}
+        self.nexus = Nexus()
+        self.languages: NativeLanguageRegistry = proposed_nxl_registry()
+        self.archive = ArchiveReconstructor()
+        self.innovations: dict[str, InnovationRecord] = {}
 
     def register_contract(self, contract: SystemContract) -> str:
         cid = self.engineering.system.register_contract(contract)
@@ -68,6 +75,13 @@ class NEXENTSystem:
             raise ValueError(f"visual design already exists: {design.name}")
         self.visuals[design.name] = design
         self.kernel.ledger.append("VAN_DESIGN_REGISTERED", "SYSTEM", design.name, design.to_dict())
+
+    def register_innovation(self, innovation: InnovationRecord) -> str:
+        if innovation.canonical_id in self.innovations:
+            raise ValueError(f"innovation already exists: {innovation.canonical_id}")
+        self.innovations[innovation.canonical_id] = innovation
+        self.kernel.ledger.append("INNOVATION_REGISTERED", "SYSTEM", innovation.canonical_id, {"name": innovation.name, "status": innovation.status.value})
+        return innovation.canonical_id
 
     def snapshot(self) -> SystemSnapshot:
         return SystemSnapshot(
