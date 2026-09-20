@@ -16,6 +16,10 @@ class EngineeringRuntime:
         self.engine = engine or EngineeringSystem()
         self.ledger = ledger or EventLedger()
 
+    @property
+    def system(self):
+        return self.engine
+
     def deploy(self, contract: SystemContract, handler: Callable[[dict[str, Any]], Any], *, actor="ENGINEERING_RUNTIME"):
         cid = self.engine.register_contract(contract)
         self.engine.register_handler(cid, handler)
