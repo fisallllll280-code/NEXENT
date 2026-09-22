@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "purpose": "GitHub-native registry for cross-project inventory, comparison, execution and provenance",
+  "repositories": [
+    {
+      "id": "NEXENT",
+      "repo": "fisallllll280-code/NEXENT",
+      "role": "control-plane",
+      "status": "TESTED"
+    },
+    {
+      "id": "VAIXLNS-UNIFIED",
+      "repo": "fisallllll280-code/VAIXLNS-unified",
+      "role": "verification/execution",
+      "status": "TESTED_PENDING_RECHECK"
+    },
+    {
+      "id": "VAIXLNS-CORE",
+      "repo": "fisallllll280-code/vaixlns-core",
+      "role": "constitutional-core",
+      "status": "SPECIFICATION_INTEGRATION_TARGET"
+    },
+    {
+      "id": "VAIXLNS-CSD-KERNEL",
+      "repo": "fisallllll280-code/vaixlns-csd-kernel",
+      "role": "root-constitution",
+      "status": "SPECIFIED"
+    },
+    {
+      "id": "VX-RUNTIME",
+      "repo": "fisallllll280-code/VX-runtime",
+      "role": "runtime-contract",
+      "status": "SPECIFICATION_CONTRACTS"
+    },
+    {
+      "id": "VX50-COMPLETE-BUILD",
+      "repo": "fisallllll280-code/VX50_COMPLETE_BUILD",
+      "role": "recovery-target",
+      "status": "INCOMPLETE"
+    },
+    {
+      "id": "INTENT-TO-REALITY",
+      "repo": "fisallllll280-code/VAIXLNS-Intent-to-Reality",
+      "role": "intent-execution-chain",
+      "status": "INCOMPLETE_RECOVERY_REQUIRED"
+    }
+  ],
+  "preservation_policy": "No source repository is deleted or overwritten by the assembly layer."
+}
