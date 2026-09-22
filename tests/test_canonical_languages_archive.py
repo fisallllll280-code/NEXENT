@@ -13,4 +13,5 @@ def test_language_family_is_proposed():
 def test_archive_conservative_duplicate():
     a=ArchiveRecord("R1","old/a",ArchiveClass.INNOVATION,"X","h1",ReconstructionStatus.RESTORED)
     b=ArchiveRecord("R2","old/b",ArchiveClass.INNOVATION,"X","h1",ReconstructionStatus.RESTORED)
-    c=ArchiveRecord("R3","new","Y","h2",ReconstructionStatus.PROPOSED)
+    c=ArchiveRecord("R3","new",ArchiveClass.INNOVATION,"Y","h2",ReconstructionStatus.PROPOSED)
+    r=ArchiveReconstructor([a,b,c]).classify(); assert r.restored==(a,); assert r.duplicates==(b,); assert r.proposed==(c,)
