@@ -1,0 +1,37 @@
+name: NEXENT Universal Assembly
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build local inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          find . -type f -not -path './.git/*' | LC_ALL=C sort > evidence/repository-files.txt
+          sha256sum evidence/repository-files.txt > evidence/repository-files.sha256
+      - name: Validate registry
+        run: python -m json.tool registry/PROJECT_REGISTRY.json >/dev/null
+      - name: Run NEXENT tests
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . pytest
+          python -m pytest
+          python -m nexent.cli status
+          python -m nexent.cli demo
+      - name: Publish evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexent-universal-assembly-evidence
+          path: evidence/
