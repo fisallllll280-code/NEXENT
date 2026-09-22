@@ -53,7 +53,9 @@ class LinearEngineeringLifecycle:
         return self.state
 
     def can_execute(self):
-        return self.state.current in {Phase.RELEASE,Phase.OPERATION} and bool(self.state.completed)
+        # Execution becomes eligible only after the OPERATION gate has been
+        # verified; EVOLUTION retains that eligibility for post-operation analysis.
+        return self.state.current in {Phase.OPERATION,Phase.EVOLUTION} and Phase.OPERATION in self.state.completed
 
     def manifest(self) -> dict[str,Any]:
         return {"system_id":self.state.system_id,"current_phase":self.state.current.value,
