@@ -12,5 +12,8 @@ dependencies = []
 [project.scripts]
 nexent = "nexent.cli:main"
 
+[tool.setuptools.packages.find]
+include = ["nexent*"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

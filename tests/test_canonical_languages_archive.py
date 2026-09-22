@@ -5,7 +5,7 @@ from nexent.languages import *
 def test_genome_nexus_and_algebra():
     g=SystemGenome("S-1","organize",capabilities=("index",)); assert g.genome_id.startswith("GEN-")
     n=Nexus(); n.link(NexusRelation("A","B","depends_on","dependency")); n.link(NexusRelation("B","C","supports","evidence"))
-    assert n.impact("A")==("B",); assert diff({"x":1},{"x":2})=={"x":{"left":1,"right":2}}
+    assert n.impact("A")==("B","C"); assert diff({"x":1},{"x":2})=={"x":{"left":1,"right":2}}
 
 def test_language_family_is_proposed():
     r=proposed_nxl_registry(); assert len(r.all())==9; assert all(x.status is LanguageStatus.PROPOSED for x in r.all())

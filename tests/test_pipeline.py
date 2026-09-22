@@ -14,7 +14,8 @@ def test_pipeline_advances_only_through_current_phase():
         r.gate(a.artifact_id, approved=phase is Phase.GOVERNANCE)
     assert r.lifecycle.state.current is Phase.RELEASE
     assert not r.ready_for_execution()
-    r.gate("release-001", approved=True)
+    release=r.emit("release-001", "engineering-artifact", {})
+    r.gate(release.artifact_id, approved=True)
     assert r.lifecycle.state.current is Phase.OPERATION
     assert r.ready_for_execution()
 
