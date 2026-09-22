@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "rule": "Every candidate is preserved; selection is traceable and reversible.",
+  "criteria": [
+    "capability",
+    "evidence",
+    "testability",
+    "integration_cost",
+    "dependency_risk",
+    "determinism",
+    "recovery",
+    "uniqueness"
+  ],
+  "candidates": [
+    {
+      "id": "NEXENT-CONTROL-PLANE",
+      "source": "NEXENT",
+      "state": "IMPLEMENTED_TESTED",
+      "action": "integrate"
+    },
+    {
+      "id": "VAIXLNS-UNIFIED-EXECUTION",
+      "source": "VAIXLNS-unified",
+      "state": "IMPLEMENTED",
+      "action": "verify_and_integrate"
+    },
+    {
+      "id": "VAIXLNS-ROOT-LANGUAGE",
+      "source": "vaixlns-csd-kernel",
+      "state": "SPECIFIED",
+      "action": "preserve_then_build_parser"
+    },
+    {
+      "id": "VX-RUNTIME-CONTRACT",
+      "source": "VX-runtime",
+      "state": "SPECIFIED",
+      "action": "preserve_then_implement_runtime"
+    },
+    {
+      "id": "INTENT-TO-REALITY-CHAIN",
+      "source": "VAIXLNS-Intent-to-Reality",
+      "state": "INCOMPLETE",
+      "action": "recover_and_verify"
+    },
+    {
+      "id": "VX50-COMPLETE-BUILD",
+      "source": "VX50_COMPLETE_BUILD",
+      "state": "INCOMPLETE",
+      "action": "recover_sources_before_activation"
+    }
+  ]
+}
