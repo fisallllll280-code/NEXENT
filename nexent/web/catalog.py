@@ -88,6 +88,21 @@ WEB_INNOVATIONS = (
         ("WebRuntime.capabilities", "Constitution"),
         ("test_unknown_action_is_rejected",),
     ),
+,
+    WebInnovation(
+        "WEB-011",
+        "Cognitive Source Ingestion",
+        "Turn public HTTPS resources into governed semantic web objects inside a world.",
+        ("source.fetch_source", "web.source.ingest"),
+        ("test_source_policy_rejects_non_https_and_private",),
+    ),
+    WebInnovation(
+        "WEB-012",
+        "Living Source Object",
+        "Retain source identity, content meaning, provenance, and relationships as a first-class world object.",
+        ("WebObject(object_type='web-source')",),
+        ("test_action_produces_evidence",),
+    )
 )
 
 
