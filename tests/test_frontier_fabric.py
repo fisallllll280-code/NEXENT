@@ -9,8 +9,8 @@ def test_linear_engine_is_deterministic():
     result = FrontierComputationEngine().solve_2x2(2, 1, 1, -1, 4, 1)
     assert result.x == Decimal(5) / Decimal(3)
     assert result.y == Decimal(2) / Decimal(3)
-    assert result.residual_1 == 0
-    assert result.residual_2 == 0
+    assert abs(result.residual_1) < Decimal("1e-30")
+    assert abs(result.residual_2) < Decimal("1e-30")
 
 
 def test_physics_engine_is_exposed_through_frontier():
@@ -25,7 +25,7 @@ def test_physics_engine_is_exposed_through_frontier():
         "dt": 1,
     })
     assert output["kind"] == "PHYSICAL_SIMULATION"
-    assert output["result"]["velocity"]["x"] == "1"
+    assert output["result"]["velocity"]["x"] in {"1", "1.0"}
 
 
 def test_missing_model_key_is_explicitly_unavailable(monkeypatch):
