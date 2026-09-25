@@ -93,7 +93,7 @@ class WebRuntime:
             actor=actor,
             objective=objective,
             capability="web.world.create",
-            payload={"objective": objective, "context": context},
+            payload={"objective": objective, "context": context, "actor": actor, "intent_id": intent_id},
         )
         result = self.kernel.execute(intent)
         return {
