@@ -43,7 +43,7 @@ def test_world_contains_web_objects_and_actions():
         "intent", "context", "knowledge-space"
     }
     assert {action["name"] for action in world["actions"]} == {
-        "inspect", "remember", "derive"
+        "inspect", "remember", "derive", "ingest"
     }
 
 
