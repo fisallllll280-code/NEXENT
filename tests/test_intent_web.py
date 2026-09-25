@@ -7,6 +7,7 @@ import urllib.request
 import pytest
 
 from nexent.web import WEB_INNOVATIONS, WebRuntime, create_server
+from nexent.web.source import validate_source_url
 
 
 def test_world_is_deterministic():
@@ -79,8 +80,15 @@ def test_events_are_queryable():
     assert events[-1]["previous_hash"]
 
 
+def test_source_policy_rejects_non_https_and_private():
+    with pytest.raises(ValueError):
+        validate_source_url("http://example.com")
+    with pytest.raises(ValueError):
+        validate_source_url("https://127.0.0.1/private")
+
+
 def test_innovation_catalog_is_registered():
-    assert len(WEB_INNOVATIONS) == 10
+    assert len(WEB_INNOVATIONS) == 12
     assert all(item.status == "IMPLEMENTED_FOUNDATION" for item in WEB_INNOVATIONS)
 
 
