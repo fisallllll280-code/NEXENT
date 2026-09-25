@@ -1,0 +1,9 @@
+{
+  "name": "NEXENT Intent Web",
+  "short_name": "NEXENT",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0e12",
+  "theme_color": "#10141a",
+  "description": "Intent-first governed web runtime"
+}
