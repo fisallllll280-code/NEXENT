@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10141a">
+  <meta name="description" content="NEXENT Intent Web — an intent-first, governed web runtime.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/style.css">
+  <title>NEXENT Intent Web</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">NEXENT</span>
+        <h1>Intent Web</h1>
+        <p class="subtitle">Turn intent into a living, governed web world.</p>
+      </div>
+      <div class="status" id="health">checking…</div>
+    </header>
+
+    <section class="intent-card">
+      <label for="objective">What are you trying to accomplish?</label>
+      <div class="intent-row">
+        <input id="objective" autocomplete="off"
+          placeholder="e.g. Build a research workspace for quantum computing">
+        <button id="run-intent">Create World</button>
+      </div>
+      <div class="context-row">
+        <input id="context" autocomplete="off"
+          placeholder='Optional context JSON, e.g. {"domain":"research"}'>
+        <span class="hint">Context stays attached to the intent.</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head"><h2>Active World</h2><code id="world-id">—</code></div>
+        <div id="world" class="empty">No world yet. Start with an intent.</div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><h2>Actions</h2><span id="action-count">0</span></div>
+        <div class="action-box">
+          <textarea id="action-input" rows="4" placeholder="Input for remember / derive actions"></textarea>
+          <div id="actions" class="actions"></div>
+          <label class="confirm"><input type="checkbox" id="confirm"> explicit confirmation</label>
+        </div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-head"><h2>Proof Surface</h2><span id="proof-state">waiting</span></div>
+        <pre id="proof">No execution proof yet.</pre>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-head"><h2>Event Fabric</h2><span id="event-count">0</span></div>
+        <div id="events" class="events"></div>
+      </article>
+    </section>
+
+    <footer>
+      <span>NEXENT Intent Web v1</span>
+      <span id="innovations">loading innovation catalog…</span>
+    </footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
