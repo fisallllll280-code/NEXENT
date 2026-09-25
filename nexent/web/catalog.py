@@ -88,7 +88,6 @@ WEB_INNOVATIONS = (
         ("WebRuntime.capabilities", "Constitution"),
         ("test_unknown_action_is_rejected",),
     ),
-,
     WebInnovation(
         "WEB-011",
         "Cognitive Source Ingestion",
