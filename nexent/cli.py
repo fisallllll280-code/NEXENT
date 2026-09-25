@@ -12,9 +12,24 @@ def build_demo() -> NexentKernel:
 
 def main() -> None:
     p=argparse.ArgumentParser(prog="nexent")
-    p.add_argument("command",choices=["demo","status","run"])
+    p.add_argument("command",choices=["demo","status","run","web"])
     p.add_argument("--intent")
+    p.add_argument("--host", default="127.0.0.1")
+    p.add_argument("--port", type=int, default=8787)
     a=p.parse_args()
+
+    if a.command=="web":
+        from .web.server import create_server
+        server=create_server(host=a.host, port=a.port)
+        print(f"NEXENT Intent Web listening on http://{a.host}:{a.port}")
+        try:
+            server.serve_forever()
+        except KeyboardInterrupt:
+            pass
+        finally:
+            server.server_close()
+        return
+
     k=build_demo()
     if a.command=="status":
         print(json.dumps(k.status(),indent=2)); return
@@ -24,3 +39,6 @@ def main() -> None:
     d=NexentDSL.parse(a.intent or "INTENT demo BY CLI USING echo WITH message=NEXENT")
     r=k.execute(Intent(d.name,d.actor,d.name,d.capability,d.payload))
     print(json.dumps(r.public(),indent=2))
+
+if __name__ == "__main__":
+    main()
