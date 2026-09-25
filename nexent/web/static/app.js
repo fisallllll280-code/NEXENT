@@ -100,6 +100,9 @@ async function refreshEvents() {
 
 async function boot() {
   try {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    }
     const health = await api("/api/health");
     $("health").textContent = health.ok ? "online" : "offline";
     const innovations = await api("/api/innovations");
