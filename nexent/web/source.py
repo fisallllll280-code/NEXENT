@@ -114,7 +114,7 @@ def fetch_source(url: str, *, timeout: float = 8.0) -> dict[str, str | int]:
     return {
         "url": safe_url,
         "final_url": safe_url,
-        "status_code": 200,
+        "status_code": response.getcode(),
         "content_type": content_type,
         "title": title,
         "text": text[:12000],
