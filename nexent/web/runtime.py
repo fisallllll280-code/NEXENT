@@ -7,6 +7,7 @@ from ..kernel import NexentKernel
 from ..model import Capability, EntitySpec, Intent
 from .catalog import catalog
 from .genome import WebAction, WebObject, WebWorld
+from .source import fetch_source
 
 
 class WebRuntime:
@@ -55,10 +56,17 @@ class WebRuntime:
             "Derive a semantic object from world context without side effects.",
             self._handle_world_derive,
         ))
+        self.kernel.register_capability(Capability(
+            "web.source.ingest",
+            "1.0",
+            "Fetch and materialize a public HTTPS source as a semantic web object.",
+            self._handle_source_ingest,
+        ))
         self.kernel.constitution.require("web.world.create", "objective")
         self.kernel.constitution.require("web.world.inspect", "world_id")
         self.kernel.constitution.require("web.world.remember", "world_id", "content")
         self.kernel.constitution.require("web.world.derive", "world_id", "content")
+        self.kernel.constitution.require("web.source.ingest", "world_id", "url")
 
     def register_ai_adapter(self, adapter: Any) -> None:
         """Register an AI adapter; it remains subordinate to capabilities/governance."""
@@ -168,6 +176,12 @@ class WebRuntime:
             "Derive a new semantic object from supplied content.",
             "web.world.derive",
         ))
+        world.add_action(WebAction.create(
+            "ingest",
+            "Fetch a public HTTPS source into the current world.",
+            "web.source.ingest",
+            risk="network-read",
+        ))
 
         self.worlds[world.world_id] = world
         self.intent_to_world[intent_id] = world.world_id
@@ -214,6 +228,59 @@ class WebRuntime:
             "content_digest": obj.object_id,
         })
         return {"world_id": world.world_id, "object": obj.to_dict()}
+
+    def _handle_source_ingest(self, payload: dict[str, Any]) -> dict[str, Any]:
+        world = self._require_world(str(payload["world_id"]))
+        source = fetch_source(str(payload["url"]))
+        source_obj = WebObject.create(
+            "web-source",
+            source["title"] or "Web Source",
+            source["text"],
+            state={"status": "ingested", "http_status": source["status_code"]},
+            capabilities=("inspect", "derive"),
+            properties={
+                "url": source["url"],
+                "final_url": source["final_url"],
+                "content_type": source["content_type"],
+                "bytes": source["bytes"],
+            },
+            provenance={
+                "world_id": world.world_id,
+                "method": "governed-public-https-ingestion",
+            },
+        )
+        world.add_object(source_obj)
+        knowledge_id = next(
+            obj.object_id for obj in world.objects.values()
+            if obj.object_type == "knowledge-space"
+        )
+        world.add_relation(knowledge_id, source_obj.object_id, "contains-source")
+        self.kernel.ledger.append(
+            "WEB_SOURCE_INGESTED",
+            str(payload.get("actor", "WEB_USER")),
+            source_obj.object_id,
+            {
+                "world_id": world.world_id,
+                "url": source["url"],
+                "content_type": source["content_type"],
+            },
+        )
+        return {
+            "world_id": world.world_id,
+            "source": source_obj.to_dict(),
+        }
+
+    def ingest_url(self, world_id: str, url: str, *, actor: str = "WEB_USER") -> dict[str, Any]:
+        action = next(
+            a for a in self.worlds[world_id].actions.values()
+            if a.capability == "web.source.ingest"
+        )
+        return self.execute_action(
+            world_id,
+            action.action_id,
+            actor=actor,
+            input_data={"url": url},
+        )
 
     def execute_action(
         self,
