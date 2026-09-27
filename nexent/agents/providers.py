@@ -9,9 +9,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Iterable
-
-
 class ProviderStatus(str, Enum):
     DESIGN = "DESIGN"
     ACTIVE = "ACTIVE"
