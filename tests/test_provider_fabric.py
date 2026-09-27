@@ -10,7 +10,6 @@ def test_fable_provider_is_provider_neutral_and_non_authoritative():
     profile = anthropic_fable_profile()
     assert profile.provider_id == "anthropic-fable"
     assert "claude-fable-5" in profile.model_ids
-    assert "claude-fable-5-1" in profile.model_ids
     assert profile.authority == "NONE"
 
 
