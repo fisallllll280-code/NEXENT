@@ -4,6 +4,7 @@ from typing import Any, Callable
 from .kernel import NexentKernel
 from .engineering import EngineeringRuntime, EngineeringTask, MultiMindCoordinator, NEXENTEngineeringOntology, ContradictionEngine, SystemContract, Artifact
 from .agents.registry import AgentRegistry
+from .agents.providers import ProviderRegistry, anthropic_fable_profile
 from .portfolio import Portfolio
 from .physics import PhysicsEngine
 from .van import VANDesign
@@ -18,12 +19,15 @@ class SystemSnapshot:
     agents: tuple[str, ...]
     neo_records: int
     ledger_valid: bool
+    providers: tuple[str, ...] = ()
 
 class NEXENTSystem:
     """Integrated composition root for NEXENT subsystems."""
     def __init__(self, ledger_path: str | None = None) -> None:
         self.kernel = NexentKernel(ledger_path)
         self.agents = AgentRegistry()
+        self.providers = ProviderRegistry()
+        self.providers.register(anthropic_fable_profile())
         self.coordinator = MultiMindCoordinator(self.agents)
         self.neo = NEXENTEngineeringOntology()
         self.contradictions = ContradictionEngine()
@@ -90,4 +94,5 @@ class NEXENTSystem:
             agents=tuple(a.agent_id for a in self.agents.all()),
             neo_records=len(self.neo.records),
             ledger_valid=self.kernel.ledger.verify(),
+            providers=tuple(p.provider_id for p in self.providers.all()),
         )
