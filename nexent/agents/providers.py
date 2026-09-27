@@ -87,7 +87,7 @@ def anthropic_fable_profile() -> AgentProviderProfile:
         provider_id="anthropic-fable",
         vendor="Anthropic",
         role="AGENT_WORKER",
-        model_ids=("claude-fable-5", "claude-fable-5-1"),
+        model_ids=("claude-fable-5",),
         capabilities=(
             "repo-analysis",
             "architecture-engineering",
