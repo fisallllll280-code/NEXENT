@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NEXENT Financial Research Record",
+  "type": "object",
+  "required": ["record_id", "domain", "status", "claim", "scope", "assumptions", "evidence", "proof_obligations"],
+  "properties": {
+    "record_id": {"type":"string","minLength":1},
+    "domain": {"type":"string","enum":["MARKET_RESEARCH","ECONOMIC_MODELING","RISK_ENGINEERING","TREASURY_SIMULATION","ACCOUNTING_PRECISION","PORTFOLIO_ALLOCATION","FINANCIAL_ARCHITECTURE","PROOF_AND_ASSURANCE"]},
+    "status": {"type":"string","enum":["PROPOSED","EVIDENCED","PROVEN","VALIDATED","CONTESTED","INVALIDATED"]},
+    "claim": {"type":"string","minLength":1},
+    "scope": {"type":"string","minLength":1},
+    "assumptions": {"type":"array","items":{"type":"string"}},
+    "evidence": {"type":"array","items":{"type":"string"}},
+    "proof_obligations": {"type":"array","items":{"type":"string"}},
+    "falsification_conditions": {"type":"array","items":{"type":"string"}},
+    "observation_time": {"type":"string"},
+    "uncertainty": {"type":"object"},
+    "execution_authority": {"type":"string","enum":["NONE","ADOPTION_REQUEST_ONLY"]}
+  },
+  "additionalProperties": false
+}
