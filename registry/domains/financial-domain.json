@@ -1,0 +1,10 @@
+{
+  "domain_id": "NX.DOMAIN.FINANCIAL",
+  "owner": "NEXENT",
+  "role": "RESEARCH_AND_SIMULATION",
+  "authority": "NO_REAL_WORLD_EXECUTION",
+  "epistemic_states": ["PROPOSED","EVIDENCED","PROVEN","VALIDATED","CONTESTED","INVALIDATED"],
+  "capabilities": ["market_research","economic_modeling","risk_engineering","treasury_simulation","accounting_precision","portfolio_allocation","financial_architecture","proof_assurance"],
+  "promotion_target": "VAIXLNS/VX_ADMISSION",
+  "canonical_mutation": false
+}
