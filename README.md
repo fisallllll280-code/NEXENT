@@ -198,7 +198,7 @@ Architecture C
 Architecture D
 ...
 Architecture N
-
+  
 ثم يقارنها حسب:
 
 Correctness
