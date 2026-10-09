@@ -141,3 +141,11 @@ def test_parameters_and_manifest_are_recursively_immutable():
         bundle.manifest["artifacts"][0]["status"] = "KERNEL_VALIDATED"
     with pytest.raises(TypeError):
         request.parameters["holes"][0][0] = 7
+
+
+def test_scad_comments_do_not_break_static_validation():
+    request = DrawingRequest("BOX-2", "Box (rev [2])", "mechanical", "box",
+                             {"width": 10, "height": 8, "depth": 4},
+                             units="mm", formats=("scad",))
+    artifact = EngineeringDrawingAgent().generate(request).artifacts[0]
+    assert "PASS: scad_delimiters_balanced" in artifact.static_checks
