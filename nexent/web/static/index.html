@@ -1,70 +1,93 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#10141a">
-  <meta name="description" content="NEXENT Intent Web — an intent-first, governed web runtime.">
+  <meta name="theme-color" content="#09111b">
+  <meta name="description" content="VAIXLNS and NEXENT governed engineering command fabric.">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="stylesheet" href="/style.css">
-  <title>NEXENT Intent Web</title>
+  <title>NEXENT Intent Web — VAIXLNS Command Fabric</title>
 </head>
 <body>
-  <main class="shell">
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#overview"><span class="brand-symbol">Ω</span><span><strong>VAIXLNS</strong><small>COMMAND FABRIC · NEXENT</small></span></a>
+    <p class="nav-caption">مساحة العمل</p>
+    <nav class="primary-nav" aria-label="التنقل الرئيسي">
+      <button class="nav-item active" data-screen="overview"><span>⌂</span>مركز القيادة</button>
+      <button class="nav-item" data-screen="indexes"><span>▦</span>أطلس الفهارس <small>28</small></button>
+      <button class="nav-item" data-screen="innovations"><span>✳</span>مصنع الابتكارات <small>177</small></button>
+      <button class="nav-item" data-screen="runtime"><span>⌁</span>التشغيل والأدلة <small>LIVE</small></button>
+      <button class="nav-item" data-screen="federation"><span>◎</span>اتحاد المستودعات <small>05</small></button>
+    </nav>
+    <div class="sidebar-lower">
+      <div class="connection-card"><span id="connection-dot" class="connection-dot"></span><div><strong id="connection-label">جارٍ الاتصال</strong><small id="connection-subtitle">قراءة حالة runtime</small></div></div>
+      <p class="sidebar-note">الذكاء يقترح · الدليل يتحقق · الصلاحية الصريحة تنفذ</p>
+    </div>
+  </aside>
+
+  <main class="main-area">
     <header class="topbar">
-      <div>
-        <span class="eyebrow">NEXENT</span>
-        <h1>Intent Web</h1>
-        <p class="subtitle">Turn intent into a living, governed web world.</p>
-      </div>
-      <div class="status" id="health">checking…</div>
+      <div><p class="eyebrow">VAIXLNS <span>/</span> NEXENT <span>/</span> Ω.UI</p><h1 id="page-title">مركز القيادة</h1><p id="page-subtitle" class="page-subtitle">حالة التشغيل منفصلة عن لقطة سجل الابتكارات.</p></div>
+      <div class="top-actions"><span id="health-badge" class="health-badge"><i></i> جارٍ الفحص</span><button id="refresh-button" class="button-secondary">↻ تحديث الحالة</button></div>
     </header>
 
-    <section class="intent-card">
-      <label for="objective">What are you trying to accomplish?</label>
-      <div class="intent-row">
-        <input id="objective" autocomplete="off"
-          placeholder="e.g. Build a research workspace for quantum computing">
-        <button id="run-intent">Create World</button>
+    <div id="app-alert" class="app-alert" role="status" hidden><span id="alert-message"></span><button id="dismiss-alert" aria-label="إغلاق">×</button></div>
+
+    <section id="view-overview" class="screen active" data-view="overview">
+      <div class="hero-panel">
+        <div class="hero-copy"><span class="hero-kicker">SOURCE-BOUND · GOVERNED · OBSERVABLE</span><h2>من الفهرس إلى التنفيذ، <em>من دون تحويل الادعاء إلى حقيقة.</em></h2><p>مساحة موحدة لسجل الابتكارات، وفهرسة الصفر المفقود، وحالة runtime، وأدلة المصدر. لقطة السجل ليست مزامنة حية، ووجود الفكرة ليس إثبات تنفيذها.</p><div class="hero-actions"><button class="button-primary" data-screen="indexes">استعراض الفهارس ←</button><button class="button-quiet" data-screen="innovations">فتح سجل الابتكارات</button></div></div>
+        <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring ring-a"></div><div class="orbit-ring ring-b"></div><div class="orbit-core">Ω</div><i class="node-a"></i><i class="node-b"></i><i class="node-c"></i></div>
       </div>
-      <div class="context-row">
-        <input id="context" autocomplete="off"
-          placeholder='Optional context JSON, e.g. {"domain":"research"}'>
-        <span class="hint">Context stays attached to the intent.</span>
+      <div id="overview-metrics" class="metrics-grid"></div>
+      <div class="section-heading"><div><span class="section-kicker">CONTROL PLANE</span><h2>صورة المنظومة</h2></div><small id="overview-updated" class="subtle-note">بانتظار أول قراءة</small></div>
+      <div class="overview-grid">
+        <article class="panel"><div class="panel-heading"><h3><span class="panel-icon">◈</span> صحة وقت التشغيل</h3><span id="runtime-status-label" class="status-pill">غير مفحوص</span></div><p class="panel-description">قراءة مباشرة من واجهات NEXENT؛ لا تُستنتج الصحة من وثائق التصميم.</p><div id="runtime-summary" class="runtime-summary"><div class="loading-line"></div><div class="loading-line short"></div></div><button class="text-link" data-screen="runtime">تفاصيل التشغيل والأدلة ←</button></article>
+        <article class="panel"><div class="panel-heading"><h3><span class="panel-icon">≋</span> آخر أحداث السجل</h3><span id="overview-event-count" class="counter-label">0</span></div><div id="overview-events" class="event-list compact-events"><div class="empty-state">جارٍ تحميل الأحداث…</div></div><button class="text-link" data-screen="runtime">فتح سجل الأحداث ←</button></article>
+      </div>
+      <div class="section-heading"><div><span class="section-kicker">INTENT → WORLD → EVIDENCE</span><h2>تشغيل مهمة محكومة</h2></div><small class="subtle-note">استخدام runtime الحالي لا محاكاة الواجهة</small></div>
+      <div class="work-grid">
+        <article class="panel intent-panel"><div class="panel-heading"><h3><span class="panel-icon">↗</span> إطلاق نية جديدة</h3><span class="endpoint-tag">POST /api/intent</span></div><label for="objective">الهدف الهندسي</label><input id="objective" autocomplete="off" placeholder="مثال: فحص تعارضات عقود التكامل"><label for="context">السياق المنظم — JSON اختياري</label><textarea id="context" rows="3" spellcheck="false" placeholder='{"domain":"architecture","risk":"bounded"}'></textarea><div class="form-footer"><small>لا توجد صلاحية ضمنية لأي نموذج خارجي.</small><button id="start-intent" class="button-primary">إنشاء عالم العمل ←</button></div></article>
+        <article class="panel"><div class="panel-heading"><h3><span class="panel-icon">⌘</span> عالم العمل النشط</h3><code id="world-id">لا يوجد عالم</code></div><div id="world-output" class="empty-state">ابدأ بمهمة لإنشاء عالم حقيقي داخل runtime.</div></article>
       </div>
     </section>
 
-    <section class="grid">
-      <article class="panel">
-        <div class="panel-head"><h2>Active World</h2><code id="world-id">—</code></div>
-        <div id="world" class="empty">No world yet. Start with an intent.</div>
-      </article>
-
-      <article class="panel">
-        <div class="panel-head"><h2>Actions</h2><span id="action-count">0</span></div>
-        <div class="action-box">
-          <textarea id="action-input" rows="4" placeholder="Input for remember / derive actions"></textarea>
-          <div id="actions" class="actions"></div>
-          <label class="confirm"><input type="checkbox" id="confirm"> explicit confirmation</label>
-        </div>
-      </article>
-
-      <article class="panel wide">
-        <div class="panel-head"><h2>Proof Surface</h2><span id="proof-state">waiting</span></div>
-        <pre id="proof">No execution proof yet.</pre>
-      </article>
-
-      <article class="panel wide">
-        <div class="panel-head"><h2>Event Fabric</h2><span id="event-count">0</span></div>
-        <div id="events" class="events"></div>
-      </article>
+    <section id="view-indexes" class="screen" data-view="indexes">
+      <div class="screen-intro"><div><span class="section-kicker">ZERO-LOSS INDEX FABRIC</span><h2>أطلس الفهارس</h2><p>28 منظورًا مضبوطًا للفهرسة؛ لكل منظور نطاق وقاعدة استخراج وحدود ترقية.</p></div><div class="snapshot-label"><i></i><div><strong>لقطة مصدر مثبتة</strong><small id="index-snapshot-date">2026-10-10 · غير متزامنة تلقائيًا</small></div></div></div>
+      <div id="index-metrics" class="mini-metrics"></div>
+      <div class="toolbar"><label class="search-box"><span>⌕</span><input id="index-search" placeholder="ابحث بالاسم أو النطاق أو المفتاح…" autocomplete="off"></label><span id="index-result-count" class="result-count">28 منظورًا</span></div>
+      <div id="index-view-list" class="index-grid"></div>
+      <article class="gap-panel"><span class="gap-mark">!</span><div><strong>قيد استرداد تاريخي مهم</strong><p>المصدر يذكر نطاقًا تاريخيًا تقريبيًا من 0001 إلى 2750، لكنه لا يعرض كل صف على حدة. نُظهر الفجوة غير المحسومة بدل توليد معرّفات مفقودة أو الادعاء باكتمال الاستخراج.</p><code id="legacy-gap">0001–2750 · EXPECTED_RANGE_NOT_ITEM_LEVEL_PROOF</code></div></article>
     </section>
 
-    <footer>
-      <span>NEXENT Intent Web v1</span>
-      <span id="innovations">loading innovation catalog…</span>
-    </footer>
+    <section id="view-innovations" class="screen" data-view="innovations">
+      <div class="screen-intro"><div><span class="section-kicker">DEEP INNOVATION REGISTRY</span><h2>مصنع الابتكارات</h2><p>السجل التشغيلي، والعناوين التاريخية، وبدائيات الاختراع، وابتكارات NEXENT مع فصل الحالة عن جودة الدليل.</p></div><div class="snapshot-label"><i></i><div><strong>لا ترقية تلقائية</strong><small>UNKNOWN وPROPOSAL وCONFLICT محفوظة</small></div></div></div>
+      <div id="innovation-metrics" class="mini-metrics"></div>
+      <div class="mode-tabs" role="tablist" aria-label="مجموعات الابتكار"><button class="mode-tab active" data-innovation-mode="operational">السجل التشغيلي <b id="tab-operational-count">177</b></button><button class="mode-tab" data-innovation-mode="master">الفهرس الرئيسي <b id="tab-master-count">97</b></button><button class="mode-tab" data-innovation-mode="primitives">بدائيات الاختراع <b id="tab-primitives-count">9</b></button><button class="mode-tab" data-innovation-mode="web">أساس NEXENT <b id="tab-web-count">12</b></button></div>
+      <div class="toolbar innovation-toolbar"><label class="search-box"><span>⌕</span><input id="innovation-search" placeholder="ابحث في الاسم والوصف والآلية والمصدر…" autocomplete="off"></label><select id="innovation-status-filter" aria-label="تصفية حسب الحالة"><option value="">كل الحالات</option></select><span id="innovation-result-count" class="result-count">177 سجلًا</span></div>
+      <div id="innovation-list" class="innovation-list"></div>
+      <p class="footnote">174 من 177 سجلًا تشغيليًا موسومة للمراجعة اليدوية. التوصيفات RULE_DERIVED_DRAFT ليست دليل تنفيذ.</p>
+    </section>
+
+    <section id="view-runtime" class="screen" data-view="runtime">
+      <div class="screen-intro"><div><span class="section-kicker">LIVE RUNTIME · EVENT LEDGER · EVIDENCE</span><h2>التشغيل والأدلة</h2><p>الصحة والحالة والإمكانات والأحداث تأتي من واجهات NEXENT الحية، لا من فهرس الوثائق.</p></div><small id="runtime-refresh-time" class="subtle-note">بانتظار القراءة</small></div>
+      <div id="runtime-metrics" class="metrics-grid"></div>
+      <div class="runtime-grid"><article class="panel"><div class="panel-heading"><h3><span class="panel-icon">⌘</span> حالة المحرك</h3><span class="endpoint-tag">GET /api/status</span></div><pre id="runtime-json" class="json-view">بانتظار بيانات الحالة…</pre></article><article class="panel"><div class="panel-heading"><h3><span class="panel-icon">◇</span> عقود الإمكانات</h3><span id="capability-count" class="counter-label">0</span></div><div id="capability-list" class="capability-list"><div class="empty-state">جارٍ تحميل الإمكانات…</div></div></article></div>
+      <article class="panel event-panel"><div class="panel-heading"><h3><span class="panel-icon">≋</span> دفتر الأحداث</h3><span id="runtime-event-head" class="counter-label">0 حدث</span></div><div id="runtime-events" class="event-list"><div class="empty-state">لا توجد أحداث مستلمة بعد.</div></div></article>
+      <article class="panel proof-panel"><div class="panel-heading"><h3><span class="panel-icon">✓</span> آخر نتيجة تنفيذ</h3><span id="proof-state" class="status-pill">لا يوجد دليل حديث</span></div><pre id="proof-detail" class="json-view">لم ينفّذ runtime مهمة في هذه الجلسة بعد.</pre></article>
+    </section>
+
+    <section id="view-federation" class="screen" data-view="federation">
+      <div class="screen-intro"><div><span class="section-kicker">REPOSITORY FEDERATION</span><h2>اتحاد المستودعات</h2><p>تثبيت دور كل مستودع ومراجع main المرصودة. هذه اللقطة لا تعني أن جميع الملفات ممسوحة أو متزامنة لحظيًا.</p></div><div class="snapshot-label"><i></i><div><strong>5 مستودعات مرصودة</strong><small>مراجعات main مثبتة داخل اللقطة</small></div></div></div>
+      <div id="repository-metrics" class="mini-metrics"></div><div id="repository-list" class="repository-grid"></div>
+      <div class="section-heading"><div><span class="section-kicker">SOURCE MAP</span><h2>المراجع المستخرجة</h2></div><span id="source-document-count" class="result-count">0 مصدر</span></div><div id="source-document-list" class="source-list"></div>
+      <article class="gap-panel"><span class="gap-mark">↗</span><div><strong>حدود الاتحاد</strong><p>محول المستودعات الخارجية غير متصل ببناء zero-loss المحلي. هذه الواجهة تقدّم تصفحًا مثبتًا للمصادر، لا مسحًا ذريًا حيًا لكل مستودع. بيانات runtime مستقلة عن لقطة الفهرس.</p><code>READ-ONLY SNAPSHOT · EXTERNAL_REPOSITORIES NOT CONNECTED TO ZERO-LOSS BUILDER</code></div></article>
+    </section>
+
+    <footer class="app-footer"><span>VAIXLNS · GOVERNED ENGINEERING FABRIC</span><span>لقطة السجل + واجهات runtime الحية</span><span id="footer-time">—</span></footer>
   </main>
-  <script src="/app.js" defer></script>
+</div>
+<script src="/app.js" defer></script>
 </body>
 </html>
