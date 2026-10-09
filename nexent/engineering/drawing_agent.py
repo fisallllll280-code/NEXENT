@@ -560,6 +560,8 @@ def _static_check(fmt: str, data: str) -> tuple[str, ...]:
                     raise ValueError("remote or file-linked assets are forbidden")
         return ("PASS: svg_xml_well_formed", "PASS: no_svg_script_or_external_asset")
     if fmt == "scad":
+        # Ignore comment lines so ordinary title punctuation cannot corrupt syntax checks.
+        data = "\n".join(line for line in data.splitlines() if not line.lstrip().startswith("//"))
         pairs, stack, quote, escape = {")":"(", "]":"[", "}":"{"}, [], None, False
         for char in data:
             if quote:
