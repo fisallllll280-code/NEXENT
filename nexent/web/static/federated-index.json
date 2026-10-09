@@ -33,7 +33,7 @@
     "master_index_named_innovation_count": 97,
     "omega_master_record_count": 11,
     "vx_invention_primitive_count": 9,
-    "nexent_web_foundation_innovation_count": 1,
+    "nexent_web_foundation_innovation_count": 11,
     "historical_legacy_range": {
       "start": 1,
       "end": 2750,
@@ -12595,72 +12595,147 @@
         "POST /api/intent"
       ],
       "verification": [
-        "test_intent_creates_world",
-        "WEB-002",
-        "Web World",
-        "Materialize a live task-specific world from an intent.",
+        "test_intent_creates_world"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-002",
+      "name": "Web World",
+      "purpose": "Materialize a live task-specific world from an intent.",
+      "implementation": [
         "WebWorld",
-        "WebRuntime.get_world",
-        "test_world_is_deterministic",
-        "WEB-003",
-        "Web Object Model",
-        "Represent web entities as semantic, stateful, capability-bearing objects.",
-        "WebObject",
-        "test_world_contains_web_objects",
-        "WEB-004",
-        "Intent Continuity",
-        "Carry task context through the lifecycle of a world.",
+        "WebRuntime.get_world"
+      ],
+      "verification": [
+        "test_world_is_deterministic"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-003",
+      "name": "Web Object Model",
+      "purpose": "Represent web entities as semantic, stateful, capability-bearing objects.",
+      "implementation": [
+        "WebObject"
+      ],
+      "verification": [
+        "test_world_contains_web_objects"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-004",
+      "name": "Intent Continuity",
+      "purpose": "Carry task context through the lifecycle of a world.",
+      "implementation": [
         "WebWorld.metadata.context",
-        "WebWorld.memory",
-        "test_intent_context_is_preserved",
-        "WEB-005",
-        "Executable Web",
-        "Expose governed actions as explicit capabilities rather than opaque clicks.",
+        "WebWorld.memory"
+      ],
+      "verification": [
+        "test_intent_context_is_preserved"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-005",
+      "name": "Executable Web",
+      "purpose": "Expose governed actions as explicit capabilities rather than opaque clicks.",
+      "implementation": [
         "WebAction",
-        "WebRuntime.execute_action",
-        "test_action_produces_evidence",
-        "WEB-006",
-        "Evidence Web",
-        "Bind meaningful web actions to the NEXENT event ledger and proof layer.",
+        "WebRuntime.execute_action"
+      ],
+      "verification": [
+        "test_action_produces_evidence"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-006",
+      "name": "Evidence Web",
+      "purpose": "Bind meaningful web actions to the NEXENT event ledger and proof layer.",
+      "implementation": [
         "NexentKernel.execute",
         "Evidence",
-        "EventLedger",
-        "test_action_produces_evidence",
-        "WEB-007",
-        "World Memory",
-        "Retain structured task memory so the next interaction does not start from zero.",
-        "WebWorld.memory",
-        "WebRuntime.remember",
-        "test_memory_round_trip",
-        "WEB-008",
-        "Generative Interface",
-        "Generate the workspace from the active intent and its world state.",
-        "web/static/index.html",
-        "web/static/app.js",
-        "test_index_is_served",
-        "WEB-009",
-        "Web Evolution",
-        "Keep world state and action history observable for controlled evolution.",
-        "GET /api/events",
-        "WebRuntime.events",
-        "test_events_are_queryable",
-        "WEB-010",
-        "Governed Intelligence Surface",
-        "Expose an AI-ready adapter boundary without granting an external model implicit authority.",
-        "WebRuntime.capabilities",
-        "Constitution",
-        "test_unknown_action_is_rejected",
-        "WEB-011",
-        "Cognitive Source Ingestion",
-        "Turn public HTTPS resources into governed semantic web objects inside a world.",
-        "source.fetch_source",
-        "web.source.ingest",
-        "test_source_policy_rejects_non_https_and_private",
-        "WEB-012",
-        "Living Source Object",
-        "Retain source identity, content meaning, provenance, and relationships as a first-class world object.",
-        "WebObject(object_type='web-source')",
+        "EventLedger"
+      ],
+      "verification": [
         "test_action_produces_evidence"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-007",
+      "name": "World Memory",
+      "purpose": "Retain structured task memory so the next interaction does not start from zero.",
+      "implementation": [
+        "WebWorld.memory",
+        "WebRuntime.remember"
+      ],
+      "verification": [
+        "test_memory_round_trip"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-008",
+      "name": "Generative Interface",
+      "purpose": "Generate the workspace from the active intent and its world state.",
+      "implementation": [
+        "web/static/index.html",
+        "web/static/app.js"
+      ],
+      "verification": [
+        "test_index_is_served"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-009",
+      "name": "Web Evolution",
+      "purpose": "Keep world state and action history observable for controlled evolution.",
+      "implementation": [
+        "GET /api/events",
+        "WebRuntime.events"
+      ],
+      "verification": [
+        "test_events_are_queryable"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-010",
+      "name": "Governed Intelligence Surface",
+      "purpose": "Expose an AI-ready adapter boundary without granting an external model implicit authority.",
+      "implementation": [
+        "WebRuntime.capabilities",
+        "Constitution"
+      ],
+      "verification": [
+        "test_unknown_action_is_rejected"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-011",
+      "name": "Cognitive Source Ingestion",
+      "purpose": "Turn public HTTPS resources into governed semantic web objects inside a world.",
+      "implementation": [
+        "source.fetch_source",
+        "web.source.ingest"
+      ],
+      "verification": [
+        "test_source_policy_rejects_non_https_and_private"
       ],
       "status": "IMPLEMENTED_FOUNDATION",
       "source": "nexent/web/catalog.py"
