@@ -59,9 +59,9 @@ def test_dimensioned_projection_has_expected_plate_views():
     "__import__('os').system('false')", "x.__class__", "open(x)", "x**99", "(-1)**0.5", "1e999+x"
 ])
 def test_formula_engine_rejects_unsafe_or_non_real_results(expression):
-    req = DrawingRequest("MATH-1", "Unsafe", "mathematics", "formula_curve",
-                         units="unitless", formats=("svg",), expression=expression)
     with pytest.raises(ValueError):
+        req = DrawingRequest("MATH-1", "Unsafe", "mathematics", "formula_curve",
+                             units="unitless", formats=("svg",), expression=expression)
         EngineeringDrawingAgent().generate(req)
 
 
