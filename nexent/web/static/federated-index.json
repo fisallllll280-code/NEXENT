@@ -33,7 +33,7 @@
     "master_index_named_innovation_count": 97,
     "omega_master_record_count": 11,
     "vx_invention_primitive_count": 9,
-    "nexent_web_foundation_innovation_count": 11,
+    "nexent_web_foundation_innovation_count": 12,
     "historical_legacy_range": {
       "start": 1,
       "end": 2750,
@@ -12736,6 +12736,19 @@
       ],
       "verification": [
         "test_source_policy_rejects_non_https_and_private"
+      ],
+      "status": "IMPLEMENTED_FOUNDATION",
+      "source": "nexent/web/catalog.py"
+    },
+    {
+      "id": "WEB-012",
+      "name": "Living Source Object",
+      "purpose": "Retain source identity, content meaning, provenance, and relationships as a first-class world object.",
+      "implementation": [
+        "WebObject(object_type='web-source')"
+      ],
+      "verification": [
+        "test_action_produces_evidence"
       ],
       "status": "IMPLEMENTED_FOUNDATION",
       "source": "nexent/web/catalog.py"
