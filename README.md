@@ -2846,3 +2846,8 @@ Implemented baseline: kernel + graph + governance + capability registry + ledger
 Target layers: persistent storage, full compiler/IR pipeline, sandboxing, distributed execution, knowledge graph/pattern forest/causal DAG, multi-agent mesh, cryptographic signatures, external adapters and production deployment.
 
 القاعدة: لا ادعاء تنفيذ بلا أثر قابل للفحص في المستودع أو الاختبار.
+
+
+## Provider Fabric
+
+NEXENT now exposes a provider-neutral AI agent registry. Anthropic Fable is a replaceable agent-worker profile (`anthropic-fable`) with no canonical authority. See `nexent/agents/providers.py`, `tests/test_provider_fabric.py`, and `docs/REPOSITORY_FEDERATION.md`.
