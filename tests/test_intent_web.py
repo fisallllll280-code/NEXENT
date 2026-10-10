@@ -110,6 +110,52 @@ def test_index_is_served():
         thread.join(timeout=3)
 
 
+
+def test_federated_index_snapshot_is_served():
+    runtime = WebRuntime()
+    server = create_server(host="127.0.0.1", port=0, runtime=runtime)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        port = server.server_address[1]
+        with urllib.request.urlopen(f"http://127.0.0.1:{port}/federated-index.json", timeout=5) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+            assert response.status == 200
+            assert payload["summary"]["zero_loss_index_view_count"] == 28
+            assert payload["summary"]["operational_innovation_record_count"] == 177
+            assert payload["summary"]["master_index_named_innovation_count"] == 97
+            assert payload["summary"]["vx_invention_primitive_count"] == 9
+            assert payload["summary"]["nexent_web_foundation_innovation_count"] == 12
+            assert payload["summary"]["historical_legacy_range"]["item_level_complete"] is False
+            assert payload["freshness_contract"]["registry_snapshot_is_live_synced"] is False
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join(timeout=3)
+
+
+def test_command_fabric_exposes_five_views():
+    runtime = WebRuntime()
+    server = create_server(host="127.0.0.1", port=0, runtime=runtime)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        port = server.server_address[1]
+        with urllib.request.urlopen(f"http://127.0.0.1:{port}/", timeout=3) as response:
+            body = response.read().decode("utf-8")
+            assert response.status == 200
+            assert 'id="view-overview"' in body
+            assert 'id="view-indexes"' in body
+            assert 'id="view-innovations"' in body
+            assert 'id="view-runtime"' in body
+            assert 'id="view-federation"' in body
+            assert "NEXENT Intent Web" in body
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join(timeout=3)
+
+
 def test_http_intent_round_trip():
     runtime = WebRuntime()
     server = create_server(host="127.0.0.1", port=0, runtime=runtime)

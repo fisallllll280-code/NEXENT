@@ -72,6 +72,8 @@ class NEXENTWebHandler(BaseHTTPRequestHandler):
                 return self._serve_static("manifest.webmanifest", "application/manifest+json")
             if path == "/sw.js":
                 return self._serve_static("sw.js", "text/javascript; charset=utf-8")
+            if path == "/federated-index.json":
+                return self._serve_static("federated-index.json", "application/json; charset=utf-8")
             if path == "/api/health":
                 return self._send_json({"ok": True, "service": "nexent-web"})
             if path == "/api/status":
