@@ -1,0 +1,24 @@
+{
+  "schema": "nexent.domain-adapter-registry/v1",
+  "domain": "engineering_drawing",
+  "agent_id": "ENG-CAD",
+  "lifecycle_status": "DESIGN",
+  "autonomy_level": "A0",
+  "accepted_inputs": ["DrawingRequest/v1", "formula_expression/v1", "VideoSourceRecord/v1"],
+  "emitted_formats": ["svg", "scad", "cadquery_py", "json"],
+  "generation_capabilities": ["dimensioned_orthographic_preview", "bounded_formula_plot", "parametric_openscad_source", "parametric_cadquery_source", "sha256_evidence_manifest", "timestamped_video_evidence"],
+  "non_claims": ["cad_kernel_validation", "manufacturing_certification", "regulatory_approval", "safety_certification"],
+  "external_tools": [
+    {"id": "freecad", "url": "https://github.com/FreeCAD/FreeCAD", "state": "CATALOGUED", "execution": "disabled"},
+    {"id": "opencascade", "url": "https://github.com/Open-Cascade-SAS/OCCT", "state": "CATALOGUED", "execution": "disabled"},
+    {"id": "cadquery", "url": "https://github.com/CadQuery/cadquery", "state": "SOURCE_EMITTER", "execution": "disabled"},
+    {"id": "openscad", "url": "https://github.com/openscad/openscad", "state": "SOURCE_EMITTER", "execution": "disabled"},
+    {"id": "kicad", "url": "https://gitlab.com/kicad/code/kicad", "state": "CATALOGUED", "execution": "disabled"},
+    {"id": "openfoam", "url": "https://gitlab.com/openfoam/core/openfoam", "state": "CATALOGUED", "execution": "disabled"},
+    {"id": "blender", "url": "https://github.com/blender/blender", "state": "CATALOGUED", "execution": "disabled"},
+    {"id": "yt-dlp", "url": "https://github.com/yt-dlp/yt-dlp", "state": "REFERENCE_ONLY", "execution": "disabled"},
+    {"id": "whisper", "url": "https://github.com/openai/whisper", "state": "REFERENCE_ONLY", "execution": "disabled"},
+    {"id": "ffmpeg", "url": "https://github.com/FFmpeg/FFmpeg", "state": "REFERENCE_ONLY", "execution": "disabled"}
+  ],
+  "release_gate": ["source_revision_pinned", "license_review", "sbom_present", "isolated_execution", "resource_limits", "kernel_validation", "independent_review", "vx_authorization"]
+}
