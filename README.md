@@ -2846,3 +2846,47 @@ Implemented baseline: kernel + graph + governance + capability registry + ledger
 Target layers: persistent storage, full compiler/IR pipeline, sandboxing, distributed execution, knowledge graph/pattern forest/causal DAG, multi-agent mesh, cryptographic signatures, external adapters and production deployment.
 
 القاعدة: لا ادعاء تنفيذ بلا أثر قابل للفحص في المستودع أو الاختبار.
+بعد إنشاء القائمة، ننتقل إلى ربطها بمنظومة VAIXLNS × VX، بالترتيب التالي:
+
+المرحلة 1 — تجهيز القائمة
+
+* اضغط Create.
+* افتح القائمة الجديدة.
+* اجعلها مركز متابعة البنية التحتية.
+
+المرحلة 2 — إضافة المهام
+
+أضف هذه العناصر بالترتيب:
+
+المهمة	الأولوية
+VAIXLNS Repository Audit	حرجة
+Windows Local Environment	حرجة
+Cloud Infrastructure Audit	حرجة
+GitHub Actions Verification	عالية
+MCP Tools Inventory	عالية
+Local–Cloud Synchronization	عالية
+Backup & Recovery Testing	عالية
+Security & Access Audit	عالية
+Evidence Registry	حرجة
+
+المرحلة 3 — النتيجة المستهدفة
+
+VAIXLNS × VX Hybrid Control
+
+Local Windows
+
+يحتاج تحقق
+
+Cloud Infrastructure
+
+يحتاج تحقق
+
+Repository Integrity
+
+يحتاج تحقق
+
+Automated Recovery
+
+يحتاج تحقق
+
+الخطوة الآن: أنشئ القائمة وأرسل لي صورة لما يظهر بعدها، وسأحدد لك الإجراء التالي بدقة.
